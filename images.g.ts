@@ -22,6 +22,68 @@ f f f c 3 c c c c 3 c f f f
 . . . . f f f f f f . . . . 
 . . . . f f . . f f . . . . 
 `;
+            case "9B8?S,?d1~tWn}MIld@6":
+            case "monillo":return img`
+. . . . . f f f f f . . . . . . 
+. . . . f e e e e e f . . . . . 
+. . . f d d d d d e e f . . . . 
+. . f f f d d f f d e f f . . . 
+. c d d e e d d d d e d d f . . 
+. c c d d d d c d d e d f f f . 
+. c d c c c c d d d e d f b d f 
+. . c d d d d d d e e f f d d f 
+. . . c d d d d e e f f e f f f 
+. . . . f f f e e f e e e f . . 
+. . . . f e e e e e e e f f f . 
+. . . f e e e e e e f f f e f . 
+. . f f e e e e f f f f f e f . 
+. f b d f e e f b b f f f e f . 
+. f d d f e e f d d b f f f f . 
+. f f f f f f f f f f f f f . . 
+`;
+            case "image2":
+            case "arbre_pi":return img`
+........................
+...........88...........
+..........8668..........
+..........8668..........
+.........f6666f.........
+........f866668f........
+.......8666666668.......
+......866866668668......
+......f8866666688f......
+.....f886686686688f.....
+....f88ff88688fff88f....
+....ffff88fff88f8fff....
+.....f8f8ff8ff8f88f.....
+....f88fff88fffff8f.....
+....f8ffff8fffffffff....
+....fff88ffffff88fff....
+....f868ffff8fff868f....
+...f666ff8f86f8ff668....
+..f6666866866f6686668...
+.f66686666666866668668..
+.ff8866666666666666866f.
+.f8866686686866686668ff.
+..ff668868f88f66888688f.
+..f8ff88fff88ff8f88ff88f
+.f88ff8ff8f8f88fff8fffff
+f88ff8ff88ffff88ffff8f..
+ffff88f88ffffff8f8ff88f.
+.f8ffffffffffffff88ff8f.
+.ff6fffff8ff8ff6ff8f6ff.
+.f668f6686ff66f6668866ff
+f668666866f666868666866f
+fff666f6688666666f666ff.
+..ffff86f866688668ffff..
+.....f8ff66f888ff8f.....
+......fff8fff88ffff.....
+.........ffeeff.........
+.........feeeef.........
+.........feeeef.........
+........feeefeef........
+........fefeffef........
+`;
             case "Fa_Z]$,@@re8DUv":
             case "Fondillo":return img`
 1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -144,25 +206,6 @@ dddddddddddd66666dddddddddddd99999999999dddddddddddd66666dddddddddddd99999999999
 6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
 6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
 6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
-`;
-            case "9B8?S,?d1~tWn}MIld@6":
-            case "monillo":return img`
-. . . . . f f f f f . . . . . . 
-. . . . f e e e e e f . . . . . 
-. . . f d d d d d e e f . . . . 
-. . f f f d d f f d e f f . . . 
-. c d d e e d d d d e d d f . . 
-. c c d d d d c d d e d f f f . 
-. c d c c c c d d d e d f b d f 
-. . c d d d d d d e e f f d d f 
-. . . c d d d d e e f f e f f f 
-. . . . f f f e e f e e e f . . 
-. . . . f e e e e e e e f f f . 
-. . . f e e e e e e f f f e f . 
-. . f f e e e e f f f f f e f . 
-. f b d f e e f b b f f f e f . 
-. f d d f e e f d d b f f f f . 
-. f f f f f f f f f f f f f . . 
 `;
         }
         return null;

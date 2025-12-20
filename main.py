@@ -1,10 +1,18 @@
 @namespace
 class SpriteKind:
     npc = SpriteKind.create()
-
-def on_on_overlap(sprite, otherSprite):
-    pass
-sprites.on_overlap(SpriteKind.player, SpriteKind.npc, on_on_overlap)
+    arbre = SpriteKind.create()
+def crearArbres():
+    global numero_arboles, arbol2, posicion_x, posicion_y, index
+    numero_arboles = randint(20, 25)
+    while index <= numero_arboles - 1:
+        arbol2 = sprites.create(assets.image("""
+            arbre_pi
+            """), SpriteKind.arbre)
+        posicion_x = randint(index * 7, index * 7 + 15)
+        posicion_y = randint(20, 55)
+        arbol2.set_position(posicion_x, posicion_y)
+        index += 1
 
 def on_down_pressed():
     animation.run_image_animation(nena,
@@ -33,6 +41,21 @@ def on_left_pressed():
         False)
 controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
 
+# Primero verificar si está tocando un árbol
+
+def on_a_pressed():
+    global arbol_tocado, myMenu
+    for arbol in sprites.all_of_kind(SpriteKind.arbre):
+        if nena.overlaps_with(arbol):
+            arbol_tocado = arbol
+            break
+    if arbol_tocado:
+        sprites.destroy(arbol_tocado)
+        nena.say_text("He recollit llenya!", 1000)
+    elif nena.overlaps_with(npc2):
+        myMenu = miniMenu.create_menu(miniMenu.create_menu_item("Benvingut al mercat!"))
+controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
+
 def on_up_pressed():
     animation.run_image_animation(nena,
         assets.animation("""
@@ -42,10 +65,23 @@ def on_up_pressed():
         False)
 controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
 
+def on_on_destroyed(sprite):
+    info.change_score_by(1)
+sprites.on_destroyed(SpriteKind.arbre, on_on_destroyed)
+
+arbol_tocado: Sprite = None
+posicion_y = 0
+posicion_x = 0
+arbol2: Sprite = None
+index = 0
+numero_arboles = 0
+myMenu: miniMenu.MenuSprite = None
 nena: Sprite = None
+npc2: Sprite = None
 scene.set_background_image(assets.image("""
     Fondillo
     """))
+crearArbres()
 npc2 = sprites.create(assets.image("""
     monillo
     """), SpriteKind.npc)
@@ -62,8 +98,13 @@ animation.run_image_animation(npc2,
         """),
     200,
     True)
+myMenu = miniMenu.create_menu(miniMenu.create_menu_item("abc"))
+myMenu.close()
+info.set_score(0)
 
 def on_forever():
     if nena.x < 85:
         npc2.say_text("Hola!", 500)
+    else:
+        myMenu.close()
 forever(on_forever)
