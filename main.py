@@ -41,10 +41,9 @@ def on_left_pressed():
         False)
 controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
 
-# Primero verificar si está tocando un árbol
-
 def on_a_pressed():
-    global arbol_tocado, myMenu
+    global arbol_tocado, seleccio_menu, myMenu
+    arbol_tocado = None
     for arbol in sprites.all_of_kind(SpriteKind.arbre):
         if nena.overlaps_with(arbol):
             arbol_tocado = arbol
@@ -52,9 +51,26 @@ def on_a_pressed():
     if arbol_tocado:
         sprites.destroy(arbol_tocado)
         nena.say_text("He recollit llenya!", 1000)
-    elif nena.overlaps_with(npc2):
-        myMenu = miniMenu.create_menu(miniMenu.create_menu_item("Benvingut al mercat!"))
+    elif nena.overlaps_with(npc2) and seleccio_menu == 0:
+        seleccio_menu = 1
+        controller.move_sprite(nena, 0, 0)
+        
+        myMenu = miniMenu.create_menu(miniMenu.create_menu_item("Gallina"),
+            miniMenu.create_menu_item("Gallina"),
+            miniMenu.create_menu_item("Patates"),
+            miniMenu.create_menu_item("Dotzena"),
+            miniMenu.create_menu_item("Caball"),
+            miniMenu.create_menu_item("Tancar menú"))
+        
+        myMenu.set_title("mercat de trueque!")
 controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
+
+def on_b_pressed():
+    global seleccio_menu
+    myMenu.close()
+    controller.move_sprite(nena, 100, 100)
+    seleccio_menu = 0
+controller.B.on_event(ControllerButtonEvent.PRESSED, on_b_pressed)
 
 def on_up_pressed():
     animation.run_image_animation(nena,
@@ -69,7 +85,7 @@ def on_on_destroyed(sprite):
     info.change_score_by(1)
 sprites.on_destroyed(SpriteKind.arbre, on_on_destroyed)
 
-arbol_tocado: Sprite = None
+seleccio_menu = 0
 posicion_y = 0
 posicion_x = 0
 arbol2: Sprite = None
@@ -78,6 +94,8 @@ numero_arboles = 0
 myMenu: miniMenu.MenuSprite = None
 nena: Sprite = None
 npc2: Sprite = None
+seleccio_menu2 = 0
+arbol_tocado: Sprite = None
 scene.set_background_image(assets.image("""
     Fondillo
     """))
