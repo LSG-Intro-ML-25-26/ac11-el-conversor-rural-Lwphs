@@ -48,7 +48,6 @@ controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
 
 def on_a_pressed():
     global arbol_tocado, seleccio_menu, myMenu
-    arbol_tocado = None  
     for arbol in sprites.all_of_kind(SpriteKind.arbre):
         if nena.overlaps_with(arbol):
             arbol_tocado = arbol
@@ -56,7 +55,7 @@ def on_a_pressed():
     if arbol_tocado:
         sprites.destroy(arbol_tocado)
         nena.say_text("He recollit llenya!", 1000)
-        arbol_tocado = None 
+        arbol_tocado = None
     elif nena.overlaps_with(npc2) and seleccio_menu == 0:
         seleccio_menu = 1
         controller.move_sprite(nena, 0, 0)

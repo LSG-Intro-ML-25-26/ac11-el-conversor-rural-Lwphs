@@ -37,7 +37,6 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function on_left_pressed(
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
     
-    arbol_tocado = null
     for (let arbol of sprites.allOfKind(SpriteKind.arbre)) {
         if (nena.overlapsWith(arbol)) {
             arbol_tocado = arbol
