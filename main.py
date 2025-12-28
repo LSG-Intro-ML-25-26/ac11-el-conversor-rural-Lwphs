@@ -55,7 +55,7 @@ def on_a_pressed():
     if arbol_tocado:
         sprites.destroy(arbol_tocado)
         nena.say_text("He recollit llenya!", 1000)
-        arbol_tocado = None
+        arbol_tocado = var_none
     elif nena.overlaps_with(npc2) and seleccio_menu == 0:
         seleccio_menu = 1
         controller.move_sprite(nena, 0, 0)
@@ -112,7 +112,7 @@ def mostrar_menu_cantidad(nombre: str, precio: number):
                 llenya_actual += 0 - costo_total
                 info.set_score(llenya_actual)
                 game.splash("Has comprat " + ("" + str(cantidad)) + " " + item_nombre_temp)
-                game.splash("Cost: " + ("" + str(costo_total)) + " llenya")
+                game.splash("Cost: " + ("" + str(costo_total)) + "kg llenya")
                 controller.move_sprite(nena, 100, 100)
                 seleccio_menu = 0
             else:
@@ -168,6 +168,7 @@ index = 0
 numero_arboles = 0
 nena: Sprite = None
 npc2: Sprite = None
+var_none: Sprite = None
 myMenu: miniMenu.MenuSprite = None
 pot_vendre = False
 scene.set_background_image(assets.image("""
